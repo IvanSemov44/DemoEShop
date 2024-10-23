@@ -1,12 +1,12 @@
-import "./multyStepForm.css";
-import { useMultiStepForm } from '../../hooks/useMultiStepForm';
-import { UserForm } from '../../Forms/MultiStepForm/UserForm';
-import { AddressForm } from '../../Forms/MultiStepForm/AddressFrom';
-import { AccountForm } from '../../Forms/MultiStepForm/AccountForm';
 import { FormEvent, useState } from "react";
+import "./multyStepForm.css"
+import { useMultiStepFormSecond } from "../../hooks/useMultyStepFormSecond";
+import { UserDataSecond } from "../../Forms/MultiStepSecond/UseDataSecond";
+import { AddressFormSecond } from "../../Forms/MultiStepSecond/AddressFormSecond";
+import { AccountFormSecond } from "../../Forms/MultiStepSecond/AccountFormSecond";
 
 type FormData = {
-    fistName: string
+    firstName: string
     lastName: string
     age: string
     street: string
@@ -18,7 +18,7 @@ type FormData = {
 }
 
 const INITIAl_DATA: FormData = {
-    fistName: "",
+    firstName: "",
     lastName: "",
     age: "",
     street: "",
@@ -29,8 +29,22 @@ const INITIAl_DATA: FormData = {
     password: ""
 }
 
-const MultiStepForm = () => {
+export function MultiStepFormSecond() {
     const [data, setData] = useState(INITIAl_DATA);
+
+    const {
+        currectStep,
+        steps,
+        step,
+        isFirstStep,
+        isLastStep,
+        back,
+        next
+    } = useMultiStepFormSecond([
+        <UserDataSecond {...data} updateFields={updateFields} />,
+        <AddressFormSecond {...data} updateFields={updateFields} />,
+        <AccountFormSecond {...data} updateFields={updateFields} />
+    ]);
 
     function updateFields(fields: Partial<FormData>) {
         setData(prev => {
@@ -38,32 +52,18 @@ const MultiStepForm = () => {
         })
     }
 
-    const {
-        steps,
-        currectStepIndex,
-        step,
-        isFirstStep,
-        isLastStep,
-        back,
-        next
-    } = useMultiStepForm([
-        <UserForm {...data} updateFields={updateFields} />,
-        <AddressForm {...data} updateFields={updateFields} />,
-        <AccountForm {...data} updateFields={updateFields} />
-    ]);
-
     function onSubmit(e: FormEvent) {
         e.preventDefault();
         if (!isLastStep) return next();
-        alert("Successful Account Creation");
+        alert("Succesful Created Account")
         console.log(data);
     }
 
     return (
-        <div className='form'>
+        <div className="form">
             <form onSubmit={onSubmit}>
                 <div className="steps-form">
-                    {currectStepIndex + 1}/{steps.length}
+                    {currectStep + 1}/{steps.length}
                 </div>
                 {step}
                 <div className="button">
@@ -76,5 +76,3 @@ const MultiStepForm = () => {
         </div>
     )
 }
-
-export default MultiStepForm

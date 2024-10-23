@@ -9,6 +9,7 @@ import getData from "./services/getData";
 import { SingUp } from "./pages/SingUp";
 import { Login } from "./pages/Login";
 import MultiStepForm from "./pages/Forms/MultiStepForm";
+import { MultiStepFormSecond } from "./pages/Forms/MultiStepFormSecond";
 
 function App() {
   getData
@@ -24,6 +25,7 @@ function App() {
           <Route path="/singup" element={<SingUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/multystepform" element={<MultiStepForm />} />
+          <Route path="/multiStepFormSecond" element={<MultiStepFormSecond />} />
 
         </Routes>
       </Container>

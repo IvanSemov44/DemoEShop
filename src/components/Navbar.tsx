@@ -26,6 +26,9 @@ export function Navbar() {
                     <Nav.Link to={"/multystepform"} as={NavLink}>
                         Multy Step Form
                     </Nav.Link>
+                    <Nav.Link to={"/multiStepFormSecond"} as={NavLink}>
+                    Multy Step Form Second
+                    </Nav.Link>
                 </Nav>
                 {cartQuantity > 0 && (
                     <Button
