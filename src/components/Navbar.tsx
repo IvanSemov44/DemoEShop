@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 
 export function Navbar() {
-    const { openCart, closeCart, cartQuantity } = useShoppingCart();
+    const { openCart, cartQuantity } = useShoppingCart();
     return (
         <Navbarbs sticky="top" className="bg-white shadow-sm mb-3">
             <Container className="me-auto">
@@ -16,6 +16,15 @@ export function Navbar() {
                     </Nav.Link>
                     <Nav.Link to={"/about"} as={NavLink}>
                         About
+                    </Nav.Link>
+                    <Nav.Link to={"/singup"} as={NavLink}>
+                        SingUp
+                    </Nav.Link>
+                    <Nav.Link to={"/login"} as={NavLink}>
+                        Login
+                    </Nav.Link>
+                    <Nav.Link to={"/multystepform"} as={NavLink}>
+                        Multy Step Form
                     </Nav.Link>
                 </Nav>
                 {cartQuantity > 0 && (
