@@ -5,14 +5,13 @@ import { Store } from "./pages/Store";
 import { About } from "./pages/About";
 import { Navbar } from "./components/Navbar"
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
-import getData from "./services/getData";
 import { SingUp } from "./pages/SingUp";
 import { Login } from "./pages/Login";
 import MultiStepForm from "./pages/Forms/MultiStepForm";
 import { MultiStepFormSecond } from "./pages/Forms/MultiStepFormSecond";
+import LogInForm from "./Forms/LogInForm/LogInForm";
 
 function App() {
-  getData
   return (
     <ShoppingCartProvider>
 
@@ -26,6 +25,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/multystepform" element={<MultiStepForm />} />
           <Route path="/multiStepFormSecond" element={<MultiStepFormSecond />} />
+          <Route path="/logInForm" element={< LogInForm />} />
 
         </Routes>
       </Container>

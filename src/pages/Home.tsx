@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import getData from "../services/getData"
+import { getData } from "../services/getData"
 
 interface Company {
     id: string;
@@ -17,7 +17,7 @@ export function Home() {
     return (
         <ul>
             {data.map(item =>
-                <li>
+                <li key={item.id}>
                     <h3>{item.id}</h3>
                     <h3>{item.name}</h3>
                     <h3>{item.fullAddress}</h3>
