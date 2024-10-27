@@ -10,6 +10,8 @@ import { Login } from "./pages/Login";
 import MultiStepForm from "./pages/Forms/MultiStepForm";
 import { MultiStepFormSecond } from "./pages/Forms/MultiStepFormSecond";
 import LogInForm from "./Forms/LogInForm/LogInForm";
+import LoginPractice from "./componentsPractice/LoginPractice";
+import RegisterPractice from "./componentsPractice/Register";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path="/multystepform" element={<MultiStepForm />} />
           <Route path="/multiStepFormSecond" element={<MultiStepFormSecond />} />
           <Route path="/logInForm" element={< LogInForm />} />
+          <Route path="/loginpractice" element={< LoginPractice />} />
+          <Route path="/registerpractice" element={< RegisterPractice />} />
 
         </Routes>
       </Container>

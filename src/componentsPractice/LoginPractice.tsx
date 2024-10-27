@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import * as Yup from "yup";
 import { login } from '../AuthenticationPractice/auth.service';
-import { ErrorMessage, Field, Formik } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 
 type Props = {};
 
-const Login: React.FC<Props> = () => {
+const LoginPractice: React.FC<Props> = () => {
 
     let navidate: NavigateFunction = useNavigate();
 
@@ -35,9 +35,10 @@ const Login: React.FC<Props> = () => {
             navidate("/profile");
             window.location.reload();
         }, (error) => {
+            console.log(error)
             const resMessage = (
                 error.response &&
-                error.reponse.data &&
+                error.response.data &&
                 error.response.data.message ||
                 error.message ||
                 error.ToString()
@@ -49,10 +50,10 @@ const Login: React.FC<Props> = () => {
 
     return (
         <div className="col-md-12">
-            <div className="card card-container">
+            <div className="w-50 card card-container">
                 <img src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
                     alt="profile-img"
-                    className="profile-img-card"
+                    className="w-auto profile-img-card "
                 />
                 <Formik
                     initialValues={initialValues}
@@ -61,10 +62,19 @@ const Login: React.FC<Props> = () => {
                 >
                     <Form>
                         <div className="form-group">
-                            <label htmlFor="username">UserName</label>
+                            <label htmlFor="username">Username</label>
                             <Field name="username" type="text" className="form-control" />
                             <ErrorMessage
                                 name="username"
+                                component="div"
+                                className="alert alert-danger"
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="password">Password</label>
+                            <Field name="password" type="password" className="form-control" />
+                            <ErrorMessage
+                                name="password"
                                 component="div"
                                 className="alert alert-danger"
                             />
@@ -93,4 +103,4 @@ const Login: React.FC<Props> = () => {
     )
 }
 
-export default Login
+export default LoginPractice

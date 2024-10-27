@@ -32,6 +32,12 @@ export function Navbar() {
                     <Nav.Link to={"/logInForm"} as={NavLink}>
                         LogIn
                     </Nav.Link>
+                    <Nav.Link to={"/loginpractice"} as={NavLink}>
+                        LoginPractice
+                    </Nav.Link>
+                    <Nav.Link to={"/registerpractice"} as={NavLink}>
+                        RegisterPractice
+                    </Nav.Link>
                 </Nav>
                 {cartQuantity > 0 && (
                     <Button
